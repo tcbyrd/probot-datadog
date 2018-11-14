@@ -1,10 +1,11 @@
 require('dd-trace').init()
 const { StatsD } = require('node-dogstatsd')
 const dogstatsd = new StatsD()
+
 // Checks API example
 // See: https://developer.github.com/v3/checks/ to learn more
 module.exports = app => {
-  // increment datadog on every event
+  // example that increments a datadog counter on every payload
   app.on('*', context => {
     dogstatsd.increment(`installation-${context.payload.installation.id}.payloads`)
   })

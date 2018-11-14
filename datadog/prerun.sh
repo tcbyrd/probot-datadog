@@ -1,4 +1,4 @@
-# Update the REDIS configuration using the Heroku application environment variable
+# Update the Postgres configuration using the Heroku application environment variable
 if [ -n "$DATABASE_URL" ]; then
   POSTGREGEX='^postgres://([^:]+):([^@]+)@([^:]+):([^/]+)/(.*)$'
   if [[ $DATABASE_URL =~ $POSTGREGEX ]]; then
@@ -10,6 +10,7 @@ if [ -n "$DATABASE_URL" ]; then
   fi
 fi
 
+# Update the Redis configuration using the Heroku application environment variable
 if [ -n "$REDIS_URL" ]; then
   REDISREGEX='^redis://([^:]+):([^@]+)@([^:]+):([^/]+)/(.*)$'
   if [[ $REDIS_URL =~ $REDISREGEX ]]; then
