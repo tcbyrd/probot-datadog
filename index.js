@@ -6,7 +6,7 @@ module.exports = app => {
   app.on(['check_suite.requested', 'check_run.rerequested'], check)
 
   async function check (context) {
-    dogstatsd.increment(`${context.payload.installation.id}.payloads`)
+    dogstatsd.increment(`installation-${context.payload.installation.id}.payloads`)
     // Do stuff
     const { head_branch, head_sha } = context.payload.check_suite
     // Probot API note: context.repo() => {username: 'hiimbex', repo: 'testing-things'}
