@@ -1,3 +1,4 @@
+require('dd-trace').init()
 const { StatsD } = require('node-dogstatsd')
 const dogstatsd = new StatsD()
 // Checks API example
