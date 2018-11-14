@@ -14,7 +14,7 @@ npm start
 
 ## Heroku Datadog integration
 ```
-# Setup the datadog specific buildpack ad index 1
+# Setup the datadog specific buildpack at index 1
 > heroku buildpacks:add --index 1 https://github.com/DataDog/heroku-buildpack-datadog.git
 ```
 
