@@ -1,5 +1,5 @@
 const { StatsD } = require('node-dogstatsd')
-const dogstatsd = new StatsD
+const dogstatsd = new StatsD()
 // Checks API example
 // See: https://developer.github.com/v3/checks/ to learn more
 module.exports = app => {
