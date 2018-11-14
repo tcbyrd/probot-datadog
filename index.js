@@ -3,10 +3,14 @@ const dogstatsd = new StatsD()
 // Checks API example
 // See: https://developer.github.com/v3/checks/ to learn more
 module.exports = app => {
+  // increment datadog on every event
+  app.on('*', context => {
+    dogstatsd.increment(`installation-${context.payload.installation.id}.payloads`)
+  })
+
   app.on(['check_suite.requested', 'check_run.rerequested'], check)
 
   async function check (context) {
-    dogstatsd.increment(`installation-${context.payload.installation.id}.payloads`)
     // Do stuff
     const { head_branch, head_sha } = context.payload.check_suite
     // Probot API note: context.repo() => {username: 'hiimbex', repo: 'testing-things'}
