@@ -1,9 +1,12 @@
+const { StatsD } = require('node-dogstatsd')
+const dogstatsd = new StatsD
 // Checks API example
 // See: https://developer.github.com/v3/checks/ to learn more
 module.exports = app => {
   app.on(['check_suite.requested', 'check_run.rerequested'], check)
 
   async function check (context) {
+    dogstatsd.increment(`${context.payload.installation.id}.payloads`)
     // Do stuff
     const { head_branch, head_sha } = context.payload.check_suite
     // Probot API note: context.repo() => {username: 'hiimbex', repo: 'testing-things'}

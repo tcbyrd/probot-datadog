@@ -20,6 +20,7 @@
     "test:watch": "jest --watch --notify --notifyMode=change --coverage"
   },
   "dependencies": {
+    "node-dogstatsd": "0.0.7",
     "probot": "^7.2.0"
   },
   "devDependencies": {
